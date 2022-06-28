@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 def uppercase(str):
-    a = 0
-
-    newstr = ""
-    while i != len(str):
-        if ord(str[i]) >= 97 and ord(str[i]) <= 122:
-            newstr += chr(ord(str[i]) - 32)
+    result = ''
+    for char in str:
+        if ord(char) >= 97 and ord(char) <= 122:
+            result += chr(ord(char) - 32)
         else:
-            newstr += str[i]
-            i += 1
-            print("{}".format(newstr))
+            result += char
+            print("{:s}".format(result))
