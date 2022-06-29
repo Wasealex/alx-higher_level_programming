@@ -6,5 +6,5 @@ while i != 96:
         newstr += chr(i - 32)
     else:
         newstr += chr(i)
-        i -= 1
+    i -= 1
 print("{}".format(newstr), end="")
