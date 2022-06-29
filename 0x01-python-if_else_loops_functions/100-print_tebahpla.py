@@ -7,4 +7,4 @@ while i != 96:
     else:
         newstr += chr(i)
         i -= 1
-    print("{}".format(newstr), end="")
+print("{}".format(newstr), end="")
