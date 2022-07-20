@@ -1,0 +1,1 @@
+this a projects about OOP and classes and python docstrings
