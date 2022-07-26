@@ -1,3 +1,3 @@
-#!/usr/bin/pyton3
-def copylist(x)
+#!/usr/bin/python3
+def copylist(x):
     return x.copy()
