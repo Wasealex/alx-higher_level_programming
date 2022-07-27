@@ -1,0 +1,59 @@
+===================
+using add_integer function
+=======================
+
+``add_integer(...)``` returns the addition of its two arguments. For numbers,
+that value is equivalent to using the ``+`` operator.
+
+::
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+	>>> add_integer(2, 4)
+	6
+
+::
+	>>> add_integer(2, -4)
+	-2
+
+Testing floating-point values
+
+::
+
+	>>> add_integer(2.0, 3.0)
+	5
+	>>> add_integer(6.0, -7.0)
+	-1
+
+Floats are casted to ints before addition
+::
+	>>> add_integer(3.9, 0.2)
+	3
+
+Floating and non floating values
+::
+	>>> add_integer(2.3, -3)
+	-1
+
+Default is 98 for the second no.
+::
+	>>> add_integer(1)
+	99
+
+``add_integer()`` expects that both arguments are either integers or floats.
+If either argument is a non-integer and non-float, a TypeError is raised:
+::
+
+	>>> add_integer("yes", 5)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+::
+
+	>>> add_integer(5, "yes")
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+::
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
