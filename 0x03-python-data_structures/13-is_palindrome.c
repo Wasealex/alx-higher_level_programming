@@ -24,13 +24,13 @@ int is_palindrome(listint_t **head)
 	}
 	array_data = malloc(sizeof(int) * count);
 	if (array_data == NULL)
-		exit(EXIT_FAILURE);
+		return (-1);
 	for (i = 0; i < count; i++)
 	{
 		array_data[i] = current->n;
 		current = current->next;
 	}
-	for (i = count; i < count / 2; i++)
+	for (i = 0; i <= count / 2; i++)
 	{
 		if (array_data[i] != array_data[count - i - 1])
 		{
