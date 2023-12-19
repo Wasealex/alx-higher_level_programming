@@ -6,4 +6,4 @@ class Square:
     """creating a size method"""
     def __init__(self, size):
         """size variable assignment to class"""
-        self.size = size
+        self.__size = size
