@@ -49,11 +49,10 @@ class Square:
             output = output + '\n'
             return output
         for p in range(self.position[1]):
-            output = output + " "
-        for x in range(self.__size):
-            for z in range(self.__position[0]):
-                output = output + ' '
-            for y in range(self.__size):
-                output = output + '#'
             output = output + '\n'
+        for x in range(self.__size):
+            output = output + (' ' * self.position[0])
+            output = output + ('#' * self.size)
+            if x != (self.size - 1):
+                output = output + '\n'
         return output
