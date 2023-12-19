@@ -45,8 +45,10 @@ class Square:
         """prints # based on size given"""
         if self.__size == 0:
             print()
-        else:
-            for x in range(self.__size):
+            return
+        for p in range(self.position[1]):
+            print('')
+        for x in range(self.__size):
                 for z in range(self.__position[0]):
                     print(' ', end='')
                 for y in range(self.__size):
