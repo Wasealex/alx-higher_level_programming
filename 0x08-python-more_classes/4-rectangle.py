@@ -70,3 +70,9 @@ class Rectangle:
             if h != self.__height - 1:
                 my_rectangle += '\n'
         return my_rectangle
+
+    def __repr__(self):
+        """ representing the rectangle of the string"""
+
+        my_rectangle = "Rectangle(" + str(self.__width) + "," + str(self.__height) + ")"
+        return (my_rectangle)
