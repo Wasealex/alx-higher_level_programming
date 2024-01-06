@@ -1,5 +1,23 @@
 #!/usr/bin/python3
+"""
+    this module is 5-text_indentation
+
+    it has one function, text_indentation()
+    it gets a string and prints out a split strings after '?', ':', '.',
+"""
+
+
 def text_indentation(text):
+    """
+       function text_indentation takes one argument and prints out
+       splitted string to a new line after punctionation marks['?', ':', '.']
+    Args:
+         text(str) = the only parameter
+    Return:
+           None
+    Output:
+           splited strings
+    """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     indented_text = ""
