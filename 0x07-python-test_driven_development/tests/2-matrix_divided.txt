@@ -1,0 +1,96 @@
+the ``2-matrix_divided`` module
+===============================
+
+
+using ``matrix_divided`` function
+---------------------------------
+
+
+importing ``matrix_divided`` from the ``2-matrix_divided`` module
+_________________________________________________________________
+
+	>>> matrix = __import__("2-matrix_divided").matrix_divided
+
+using ``matrix`` in normal matrix and divisor
+---------------------------------------------
+
+	>>> m = [[10, 20], [30, 40], [50, 60]]
+	>>> d = 10
+	>>> matrix(m, d)
+	[[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]]
+
+	>>> matrix(m, 1)
+	[[10.0, 20.0], [30.0, 40.0], [50.0, 60.0]]
+
+	>>> matrix(m, 5.5)
+	[[1.82, 3.64], [5.45, 7.27], [9.09, 10.91]]
+
+	>>> matrix(m, -5.5)
+	[[-1.82, -3.64], [-5.45, -7.27], [-9.09, -10.91]]
+
+using ``matrix`` in normal matrix and divisor zero
+--------------------------------------------------
+
+	>>> matrix(m, 0)
+	Traceback (most recent call last):
+  	...
+	ZeroDivisionError: division by zero
+
+using ``matrix`` in normal matrix and divisor string
+----------------------------------------------------
+
+	>>> matrix(m, "ALX")
+	Traceback (most recent call last):
+  	...
+	TypeError: div must be a number
+
+using ``matrix`` in different number and position arguments
+-----------------------------------------------------------
+
+	>>> matrix(m)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+	>>> matrix(d)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+	>>> matrix(d, d)
+	Traceback (most recent call last):
+  	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+	>>> matrix(d, m)
+	Traceback (most recent call last):
+  	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+	>>> matrix()
+	Traceback (most recent call last):
+  	...
+	...
+	TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+
+using ``matrix`` in empty matrix and divisor
+--------------------------------------------
+
+	>>> matrix([[]], 1)
+	[[]]
+
+	>>> matrix([[]], 2)
+	[[]]
+
+	>>> matrix([[]], 0)
+	Traceback (most recent call last):
+  	...
+	ZeroDivisionError: division by zero
+
+using ``matrix`` in different matrix and divisior
+-------------------------------------------------
+	>>> matrix([[1, 2] , [3]], d)
+	Traceback (most recent call last):
+  	...
+	TypeError: Each row of the matrix must have the same size

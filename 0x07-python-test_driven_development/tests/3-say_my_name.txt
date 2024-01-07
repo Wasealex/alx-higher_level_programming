@@ -1,0 +1,18 @@
+the ``3-say_my_name`` module
+============================
+
+
+using ``say_my_name``
+----------------------
+
+
+importing ``say_my_name`` from the ``3-say_my_name`` module
+_____________________________________________________________
+
+	>>> say = __import__("3-say_my_name").say_my_name
+
+checking the funtion ``say_my_name`` with strings
+-------------------------------------------------------------
+	>>> say("wase", "ALX")
+	My name is wase ALX
+
