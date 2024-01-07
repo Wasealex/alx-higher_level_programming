@@ -16,3 +16,50 @@ checking the funtion ``say_my_name`` with strings
 	>>> say("wase", "ALX")
 	My name is wase ALX
 
+	>>> say("wase")
+	My name is wase 
+
+	>>> say("")
+	My name is  
+
+	>>> say("", "")
+	My name is  
+
+	>>> say("", "ALX")
+	My name is  ALX
+
+	>>> say()
+	Traceback (most recent call last):
+  	...
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+	>>> say(1, 2)
+	Traceback (most recent call last):
+  	...
+	TypeError: first_name must be a string
+
+	>>> say(1, "ALX")
+	Traceback (most recent call last):
+  	...
+	TypeError: first_name must be a string
+
+	>>> say("wase", 2)
+	Traceback (most recent call last):
+  	...
+	TypeError: last_name must be a string
+
+	>>> say("wase", "ALX", "School")
+	Traceback (most recent call last):
+  	...
+	TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+	>>> say("wase", "ALX" + " " * 3)
+	My name is wase ALX   
+
+	>>> say("wase", "ALX" * " " * 3)
+	Traceback (most recent call last):
+	...
+	TypeError: can't multiply sequence by non-int of type 'str'
+
+	>>> say("wase", "ALX" * 2 * 3)
+	My name is wase ALXALXALXALXALXALX
