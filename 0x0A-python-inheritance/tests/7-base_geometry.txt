@@ -1,0 +1,12 @@
+the module 7-base_geometry
+==========================
+
+class BaseGeometry
+==================
+method integer_validator
+========================
+
+	>>> BG = __import__('7-base_geometry').BaseGeometry
+
+	>>> bg = BG()
+	>>> bg.integer_validator("my_int", 12)
