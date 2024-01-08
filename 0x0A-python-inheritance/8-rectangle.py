@@ -11,7 +11,6 @@ class Rectangle(BaseGeometry):
     represent a rectangle characterstics
     """
 
-
     def __init__(self, width, height):
         """
         instantazation of rectangle
