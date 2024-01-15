@@ -35,6 +35,18 @@ class Base:
         return json.loads(json_string)
 
     @classmethod
+    def create(cls, **dictionary):
+        """returns an instance with attributes
+        """
+        if dictionary and dictionary != {}:
+            if cls.__name__ == "Rectangle":
+                instance = cls(1, 1)
+            else:
+                instance = cls(1)
+            instance.update(**dictionary)
+            return instance
+
+    @classmethod
     def save_to_file(cls, list_objs):
         """json representation of list of instances who ineherits Base
            to a file
