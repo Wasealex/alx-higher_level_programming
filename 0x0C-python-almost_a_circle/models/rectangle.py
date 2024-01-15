@@ -105,3 +105,21 @@ class Rectangle(Base):
                                                                  self.y,
                                                                  self.width,
                                                                  self.height)
+
+    def update(self, *args):
+        """update values of rectangle
+        """
+        if args and len(args) != 0:
+            ar = 0
+            for arg in args:
+                if ar == 0 and arg is not None:
+                    self.id = arg
+                elif ar == 1:
+                    self.width = arg
+                elif ar == 2:
+                    self.height = arg
+                elif ar == 3:
+                    self.x = arg
+                elif ar == 4:
+                    self.y = arg
+                ar += 1
