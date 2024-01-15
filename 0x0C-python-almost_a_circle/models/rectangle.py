@@ -88,8 +88,12 @@ class Rectangle(Base):
     def display(self):
         """ prints '#' in stdout using the width and hegiht
         """
-        for h in range(self.__height):
-            for w in range(self.__width):
+        for y in range(self.y):
+            print('')
+        for h in range(self.height):
+            for x in range(self.x):
+                print(' ', end='')
+            for w in range(self.width):
                 print('#', end='')
             print()
 
