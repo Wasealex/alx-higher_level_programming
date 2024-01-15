@@ -25,3 +25,16 @@ class Base:
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         return json.dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """json representation of list of instances who ineherits Base
+           to a file
+        """
+        filename = cls.__name__ + ".json"
+        with open(filename, "w") as f:
+            if list_objs is None or len(list_objs) == 0:
+                f.write("[]")
+            else:
+                list_dictionaries = [kv.to_dictionary() for kv in list_objs]
+                f.write(Base.to_json_string(list_dictionaries))
