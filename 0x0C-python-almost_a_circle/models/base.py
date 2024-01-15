@@ -58,3 +58,15 @@ class Base:
             else:
                 list_dictionaries = [kv.to_dictionary() for kv in list_objs]
                 f.write(Base.to_json_string(list_dictionaries))
+
+    @classmethod
+    def load_from_file(cls):
+        """loads from file json represantion from .json files
+        """
+        filename = str(cls.__name__) + ".json"
+        try:
+            with open(filename, "r") as f:
+                list_dictionaries = Base.from_json_string(f.read())
+                return [cls.create(**dicts) for dicts in list_dictionaries]
+        except IOError:
+            return []
