@@ -106,7 +106,7 @@ class Rectangle(Base):
                                                                  self.width,
                                                                  self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """update values of rectangle
         """
         if args and len(args) != 0:
@@ -123,3 +123,7 @@ class Rectangle(Base):
                 elif ar == 4:
                     self.y = arg
                 ar += 1
+
+        if kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
