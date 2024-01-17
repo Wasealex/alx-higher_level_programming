@@ -14,5 +14,8 @@ class TestBase_instantiation(unittest.TestCase):
         b2 = Base()
         self.assertEqual(b1.id, b2.id - 1)
 
+    def test_unique_id(self):
+        self.assertEqual(12, Base(12).id)
+
 if __name__ == '__main__':
     unittest.main()
