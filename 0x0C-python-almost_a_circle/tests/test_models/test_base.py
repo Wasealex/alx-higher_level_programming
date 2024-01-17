@@ -4,6 +4,8 @@
 from models.base import Base
 from models.rectangle import Rectangle
 import unittest
+import os
+import io
 
 
 class TestBase_instantiation(unittest.TestCase):
@@ -145,6 +147,75 @@ class TestBase_create(unittest.TestCase):
         r1_dictionary = r1.to_dictionary()
         r2 = Rectangle.create(**r1_dictionary)
         self.assertNotEqual(r1, r2)
+
+class TestBase_save_to_file(unittest.TestCase):
+    """testing save_to_file method of Base class."""
+
+    @classmethod
+    def tearDown(self):
+        """Delete any created files"""
+        try:
+            os.remove("Rectangle.json")
+        except IOError:
+            pass
+
+    def test_save_to_file_one_rectangle(self):
+        r = Rectangle(10, 7, 2, 8, 5)
+        Rectangle.save_to_file([r])
+        with open("Rectangle.json", "r") as f:
+            self.assertTrue(len(f.read()) == 53)
+
+    def test_save_to_file_two_rectangles(self):
+        r1 = Rectangle(10, 7, 2, 8, 5)
+        r2 = Rectangle(2, 4, 1, 2, 3)
+        Rectangle.save_to_file([r1, r2])
+        with open("Rectangle.json", "r") as f:
+            self.assertTrue(len(f.read()) == 105)
+
+    def test_save_to_file_no_args(self):
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file()
+
+class TestBase_load_from_file(unittest.TestCase):
+    """testing load_from_file_method of Base class"""
+
+    @classmethod
+    def tearDown(self):
+        """Delete any created files."""
+        try:
+            os.remove("Rectangle.json")
+        except IOError:
+            pass
+
+    def test_load_from_file_first_rectangle(self):
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 5, 6, 2)
+        Rectangle.save_to_file([r1, r2])
+        list_rectangles_output = Rectangle.load_from_file()
+        self.assertEqual(str(r1), str(list_rectangles_output[0]))
+
+    def test_load_from_file_second_rectangle(self):
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 5, 6, 2)
+        Rectangle.save_to_file([r1, r2])
+        list_rectangles_output = Rectangle.load_from_file()
+        self.assertEqual(str(r2), str(list_rectangles_output[1]))
+
+    def test_load_from_file_rectangle_types(self):
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 5, 6, 2)
+        Rectangle.save_to_file([r1, r2])
+        output = Rectangle.load_from_file()
+        self.assertTrue(all(type(obj) == Rectangle for obj in output))
+
+    def test_load_from_file_no_file(self):
+        output = Rectangle.load_from_file()
+        self.assertEqual([], output)
+
+    def test_load_from_file_more_than_one_arg(self):
+        with self.assertRaises(TypeError):
+            Base.load_from_file([], 1)
+
 
 
 if __name__ == '__main__':
