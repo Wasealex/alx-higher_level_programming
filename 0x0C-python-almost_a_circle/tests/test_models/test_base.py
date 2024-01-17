@@ -32,7 +32,7 @@ class TestBase_instantiation(unittest.TestCase):
     def test_id_public(self):
         b = Base(12)
         b.id = 15
-        self.asserEqual(15, b.id)
+        self.assertEqual(15, b.id)
 
     def test_two_args(self):
         with self.assertRaises(TypeError):
