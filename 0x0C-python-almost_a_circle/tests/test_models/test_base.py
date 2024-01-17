@@ -78,5 +78,23 @@ class TestBase_instantiation(unittest.TestCase):
     def test_NaN_id(self):
         self.assertNotEqual(float('nan'), Base(float('nan')).id)
 
+class TestBase_to_json_string(unittest.TestCase):
+    """Unittests for testing to_json_string method of Base class."""
+
+    def test_to_json_string_empty_list(self):
+        self.assertEqual("[]", Base.to_json_string([]))
+
+    def test_to_json_string_none(self):
+        self.assertEqual("[]", Base.to_json_string(None))
+
+    def test_to_json_string_no_args(self):
+        with self.assertRaises(TypeError):
+            Base.to_json_string()
+
+    def test_to_json_string_more_than_one_arg(self):
+        with self.assertRaises(TypeError):
+            Base.to_json_string([], 1)
+
+
 if __name__ == '__main__':
     unittest.main()
