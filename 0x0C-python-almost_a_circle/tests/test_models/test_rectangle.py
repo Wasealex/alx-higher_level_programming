@@ -110,36 +110,36 @@ class TestRectangleArea(unittest.TestCase):
     def test_area_2(self):
         r1 = Rectangle(5, 10, 1, 5, 10)
         self.assertEqual(50, r1.area())
-class MyTest(unittest.TestCase):
-    """testing with helper method for printed outputs
+
+class TestRectangleDisplay(unittest.TestCase):
+    """ unittest for testing the display() method of Rectangle
     """
-    def assertPrintedOutput(self, expected, test):
+    @staticmethod
+    def assert_printed(expected, test):
         output = StringIO()
         sys.stdout = output
         test()
         out = output.getvalue()
         sys.stdout = sys.__stdout__
+        assert expected == out
 
-class TestRectangleDisplay(MyTest):
-    """ unittest for testing the display() method of Rectangle
-    """
     def test_display_width_height(self):
         r1 = Rectangle(3, 3, 0, 0, 0)
-        self.assertPrintedOutput("###\n###\n###\n", r1.display)
+        self.assert_printed("###\n###\n###\n", r1.display)
 
     def test_display_width_height_x(self):
         r = Rectangle(3, 2, 1, 0, 1)
-        self.assertPrintedOutput(" ###\n ###\n", r.display)
+        self.assert_printed(" ###\n ###\n", r.display)
 
     def test_display_width_height_y(self):
         r = Rectangle(4, 5, 0, 1, 0)
         o = "\n####\n####\n####\n####\n####\n"
-        self.assertPrintedOutput(o, r.display)
+        self.assert_printed(o, r.display)
 
     def test_display_width_height_x_y(self):
         r = Rectangle(2, 4, 3, 2, 0)
         o = "\n\n   ##\n   ##\n   ##\n   ##\n"
-        self.assertPrintedOutput(o, r.display)
+        self.assert_printed(o, r.display)
 
 
 
