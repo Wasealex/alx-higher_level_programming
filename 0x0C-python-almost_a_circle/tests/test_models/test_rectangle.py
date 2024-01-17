@@ -99,11 +99,11 @@ class TestRectangleErrors(unittest.TestCase):
 
     def test_area_1(self):
         r1 = Rectangle(2, 4)
-        self.assertEqual(8, r.area())
+        self.assertEqual(8, r1.area())
 
     def test_area_2(self):
         r1 = Rectangle(5, 10, 1, 5, 10)
-        self.assertEqual(50, r.area())
+        self.assertEqual(50, r1.area())
 
 if __name__ == '__main__':
     unittest.main()
