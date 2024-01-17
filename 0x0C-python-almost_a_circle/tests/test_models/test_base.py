@@ -3,6 +3,7 @@
 """
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 import unittest
 import os
 import io
@@ -148,6 +149,30 @@ class TestBase_create(unittest.TestCase):
         r2 = Rectangle.create(**r1_dictionary)
         self.assertNotEqual(r1, r2)
 
+    def test_create_square_original(self):
+        s1 = Square(3, 5, 1, 2)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertEqual("[Square] (2) 5/1 - 3", str(s1))
+
+    def test_create_square_new(self):
+        s1 = Square(3, 5, 1, 2)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertEqual("[Square] (2) 5/1 - 3", str(s2))
+
+    def test_create_square_is(self):
+        s1 = Square(3, 5, 1, 2)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertIsNot(s1, s2)
+
+    def test_create_square_equals(self):
+        s1 = Square(3, 5, 1, 2)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertNotEqual(s1, s2)
+
 class TestBase_save_to_file(unittest.TestCase):
     """testing save_to_file method of Base class."""
 
@@ -158,6 +183,11 @@ class TestBase_save_to_file(unittest.TestCase):
             os.remove("Rectangle.json")
         except IOError:
             pass
+        try:
+            os.remove("Square.json")
+        except IOError:
+            pass
+
 
     def test_save_to_file_one_rectangle(self):
         r = Rectangle(10, 7, 2, 8, 5)
@@ -172,12 +202,12 @@ class TestBase_save_to_file(unittest.TestCase):
         with open("Rectangle.json", "r") as f:
             self.assertTrue(len(f.read()) == 105)
 
-    def test_save_to_file_None(self):
+    def test_save_to_file_None_r(self):
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as f:
             self.assertEqual("[]", f.read())
 
-    def test_save_to_file_empty_list(self):
+    def test_save_to_file_empty_list_r(self):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as f:
             self.assertEqual("[]", f.read())
@@ -185,6 +215,34 @@ class TestBase_save_to_file(unittest.TestCase):
     def test_save_to_file_no_args(self):
         with self.assertRaises(TypeError):
             Rectangle.save_to_file()
+
+    def test_save_to_file_one_square(self):
+        s = Square(10, 7, 2, 8)
+        Square.save_to_file([s])
+        with open("Square.json", "r") as f:
+            self.assertTrue(len(f.read()) == 39)
+
+    def test_save_to_file_two_squares(self):
+        s1 = Square(10, 7, 2, 8)
+        s2 = Square(8, 1, 2, 3)
+        Square.save_to_file([s1, s2])
+        with open("Square.json", "r") as f:
+            self.assertTrue(len(f.read()) == 77)
+
+    def test_save_to_file_None_s(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual("[]", f.read())
+
+    def test_save_to_file_empty_list_s(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual("[]", f.read())
+
+    def test_save_to_file_no_args(self):
+        with self.assertRaises(TypeError):
+            Square.save_to_file()
+
 
 class TestBase_load_from_file(unittest.TestCase):
     """testing load_from_file_method of Base class"""
