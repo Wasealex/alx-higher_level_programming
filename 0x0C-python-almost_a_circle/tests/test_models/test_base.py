@@ -254,6 +254,11 @@ class TestBase_load_from_file(unittest.TestCase):
             os.remove("Rectangle.json")
         except IOError:
             pass
+        try:
+            os.remove("Square.json")
+        except IOError:
+            pass
+
 
     def test_load_from_file_first_rectangle(self):
         r1 = Rectangle(10, 7, 2, 8, 1)
@@ -283,6 +288,31 @@ class TestBase_load_from_file(unittest.TestCase):
     def test_load_from_file_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Base.load_from_file([], 1)
+
+    def test_load_from_file_first_square(self):
+        s1 = Square(10, 7, 2, 8)
+        s2 = Square(2, 4, 5, 6)
+        Square.save_to_file([s1, s2])
+        list_squares_output = Square.load_from_file()
+        self.assertEqual(str(s1), str(list_squares_output[0]))
+
+    def test_load_from_file_second_square(self):
+        s1 = Square(10, 7, 2, 8)
+        s2 = Square(2, 4, 5, 6)
+        Square.save_to_file([s1, s2])
+        list_squares_output = Square.load_from_file()
+        self.assertEqual(str(s2), str(list_squares_output[1]))
+
+    def test_load_from_file_square_types(self):
+        s1 = Square(10, 7, 2, 8)
+        s2 = Square(2, 4, 5, 6)
+        Square.save_to_file([s1, s2])
+        output = Square.load_from_file()
+        self.assertTrue(all(type(obj) == Square for obj in output))
+
+    def test_load_from_file_no_file(self):
+        output = Square.load_from_file()
+        self.assertEqual([], output)
 
 
 
