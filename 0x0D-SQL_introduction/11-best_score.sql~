@@ -1,0 +1,4 @@
+-- list best score that has >= 10 scores
+SELECT dvore, name FROM second_table
+WHERE score >= 10
+ORDER BY score DESC;
