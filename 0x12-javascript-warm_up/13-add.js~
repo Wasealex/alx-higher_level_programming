@@ -1,0 +1,4 @@
+#!/usr/bin/node
+exports.add = funtion (a, b) {
+    return (a + b);
+};
