@@ -1,6 +1,6 @@
 #!/usr/bin/node
 exports.converter = function (base) {
-  function myConverter(n) {
+  function myConverter (n) {
     return n.toString(base);
   }
 
