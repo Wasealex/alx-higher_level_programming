@@ -1,0 +1,19 @@
+#!/usr/bin/node
+exports.converter = function (base) {
+  return function (num) {
+    if (num === 0) {
+      return '0';
+    }
+
+    let result = '';
+    let quotient = num;
+
+    while (quotient !== 0) {
+      const remainder = quotient % base;
+      quotient = Math.floor(quotient / base);
+      result = remainder.toString() + result;
+    }
+
+    return result;
+  };
+};
