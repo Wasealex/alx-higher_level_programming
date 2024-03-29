@@ -7,7 +7,4 @@ if __name__ == "__main__":
             'https://alx-intranet.hbtn.io/status') as response:
         html = response.read()
     print(
-        f"""Body response:
-    - type: {type(html)}
-    - content: {html}
-    - utf8 content: {html.decode('utf8')}""")
+        f"""Body response:\n\t- type: {type(html)}\n\t- content: {html}\n\t- utf8 content: {html.decode('utf8')}""")
