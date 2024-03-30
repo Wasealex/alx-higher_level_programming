@@ -20,6 +20,6 @@ if __name__ == "__main__":
             user_name = json_data.get("name")
             print(f"[{user_id}] {user_name}")
         else:
-            print("no result")
+            print("No result")
     except ValueError:
         print("Not a valid JSON")
